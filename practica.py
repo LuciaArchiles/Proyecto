@@ -55,3 +55,15 @@ except FileNotFoundError:
     )
 except json.JSONDecodeError:
     print("Hubo un error al decodificar el archivo JSON (formato inválido).")
+
+#acceder a un campo de json
+
+temperatura_especifica = (
+    datos.get("grid_network", {})
+    .get("substations", [])[0]
+    .get("transformers", [])[0]
+    .get("temperature_celsius")
+)
+
+print(f"Temperatura exacta: {temperatura_especifica} °C")
+
